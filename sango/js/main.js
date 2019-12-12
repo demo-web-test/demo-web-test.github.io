@@ -54,6 +54,17 @@
         $(".category-list").removeClass("active");
         $(".bg-black-category").removeClass("active");
     });
+     
+     //menu scroll
+    var hei = $('.menu').offset().top;
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > hei) {
+            $('.menu').css({ "position": "fixed", "top": "0", "width": "100%" });
+        }
+        else {
+            $('.menu').css({ "position": "relative" });
+        }
+    })
 
     //slick
     $('.slick-slider').slick();
