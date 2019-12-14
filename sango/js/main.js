@@ -54,8 +54,8 @@
         $(".category-list").removeClass("active");
         $(".bg-black-category").removeClass("active");
     });
-     
-     //menu scroll
+
+    //menu scroll
     var hei = $('.menu').offset().top;
     $(window).scroll(function () {
         if ($(this).scrollTop() > hei) {
@@ -68,6 +68,62 @@
 
     //slick
     $('.slick-slider').slick();
+
+    //slider
+    $('.slider-for').slick({
+        autoplay: false,
+        autoplaySpeed: 2000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        fade: true,
+        dots: false,
+        asNavFor: '.slider-nav'
+    });
+
+    $('.slider-nav').slick({
+        autoplay: false,
+        autoplaySpeed: 2000,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: false,
+        centerMode: false,
+        arrows: false,
+        focusOnSelect: true
+    });
+
+    // product detail
+    $('.down').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $input = $this.closest('div').find('input');
+        var value = parseInt($input.val());
+
+        if (value > 1) {
+            value = value - 1;
+        } else {
+            value = 0;
+        }
+
+        $input.val(value);
+
+    });
+    $('.up').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $input = $this.closest('div').find('input');
+        var value = parseInt($input.val());
+
+        if (value < 100) {
+            value = value + 1;
+        } else {
+            value = 100;
+        }
+
+        $input.val(value);
+
+    });
 
     //video iframe
     $('.video-small .video').click(function (e) {
